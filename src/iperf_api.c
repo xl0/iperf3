@@ -1207,7 +1207,7 @@ iperf_print_intermediate(struct iperf_test *test)
 
     SLIST_FOREACH(sp, &test->streams, streams) {
     	print_interval_results(test, sp);
-    	bytes += sp->result->interval_results->bytes_transferred; /* sum up all streams */
+        bytes += sp->result->last_interval_results->bytes_transferred; /* sum up all streams */
     }
     if (bytes <=0 ) { /* this can happen if timer goes off just when client exits */
     	fprintf(stderr, "error: bytes <= 0!\n");
